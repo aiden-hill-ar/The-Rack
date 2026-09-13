@@ -501,9 +501,9 @@ section.main {
 
 /* --------------------------------- @media --------------------------------- */
 
-@media screen and (width <= 650px) {
+@media screen and (width <= 700px) {
     .infinity-title {
-        transform: translateX(-290px);
+        transform: translateX(-280px);
     }
 }
 @media screen and (width <= 500px) {
@@ -524,24 +524,20 @@ section.main {
     }
 }
 @media screen and (width <= 400px) {
+    .infinity-title span {
+        font-size: 68px;
+    }
     .calculator {
         margin-bottom: 30px;
+        margin-left: 0;
+        margin-right: 0;
     }
     .buttons {
         height: fit-content;
         grid-template: repeat(5, 70px) / repeat(4, 1fr);
+        padding: 10px 5px;
     }
-    .num-button,
-    .operator-button,
-    .special-button {
-        height: 65px;
-        width: 65px;
-    }
-    .num-button p,
-    .operator-button p,
-    .special-button p {
-        font-size: 28px;
-    }
+    
 }
 @media screen and (width <= 360px) {
     .num-button,

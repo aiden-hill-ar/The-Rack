@@ -18,11 +18,16 @@ body {
    font-family: "Hanuman";
    src: url("../fonts/Hanuman-Variable.ttf") format("truetype");
 }
+@font-face {
+   font-family: "Static-Bold-Hanuman";
+   src: url("../fonts/Hanuman-Bold.ttf") format("truetype");
+}
 
 .title {
    width: fit-content;
    margin: 30px auto;
    text-align: center;
+   font-family: "Static-Bold-Hanuman";
    line-height: 55px;
    font-size: 64px;
    font-weight: 900;
@@ -44,11 +49,9 @@ body {
 }
 .title.thin-color-border {
    -webkit-text-stroke: 1px hsl(var(--text-color) 100% 50%);
-   paint-order: stroke fill;
 }
 .title.thick-color-border {
    -webkit-text-stroke: 3px hsl(var(--text-color) 100% 50%);
-   paint-order: stroke fill;
 }
 
 
