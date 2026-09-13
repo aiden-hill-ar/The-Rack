@@ -109,23 +109,11 @@ function checkOperatorSyntax(arr, opValue) {
         }
     }
     if (query.length === 0) {
-        if (opValue === "+") {
+        if (opValue === "+" || opValue === "-" || opValue === "*" || opValue === "/") {
             if (previousAnswer !== 0) {
                 updateScreen("previous answer");
             }
-        } else if (opValue === "-") {
-            if (previousAnswer !== 0) {
-                updateScreen("previous answer");
-            }
-        } else if (opValue === "*") {
-            if (previousAnswer !== 0) {
-                updateScreen("previous answer");
-            }
-         } else if (opValue === "/") {
-            if (previousAnswer !== 0) {
-                updateScreen("previous answer");
-            }
-        }
+        } 
         arr.unshift(previousAnswer);
     }
 }
@@ -178,7 +166,6 @@ operatorButtons.forEach(button => {
             solveQuery();
             updateScreen(button.dataset.num);
             updateScreen("answer");
-            console.log(stringQuery);
             query = [];
             previousAnswer = answer;
             answer = [];
@@ -340,7 +327,7 @@ function sendOpInput(key) {
         newLine = true;
     } else {
         let operatorArray = [key];
-        checkOperatorSyntax(query, operatorArray);
+        checkOperatorSyntax(query, key);
         query.push(operatorArray);
         updateScreen(key);
     };

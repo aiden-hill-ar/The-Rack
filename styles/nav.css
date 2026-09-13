@@ -74,6 +74,3 @@ nav .selected::before {
     transition: transform 0.2s linear;
 }
 
-@view-transition {
-    navigation: auto;
-}

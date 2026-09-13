@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Hanuman;
+}
+
+:root {
+    --ease-out: cubic-bezier(0.506, -0.006, 0, 0.998);
+    --ease-in: cubic-bezier(0.998, -0.006, 0.504, 1.001);
+}
+
+.title {
+   display: flex;
+   justify-content: space-evenly;
+   margin: 20px 0;
+   background-color: hsl(194 96% 40%);
+   padding: 2px 0;
+}
+
+
+::view-transition-old(root) {
+   animation: page-out 0.3s ease both;
+}
+::view-transition-new(root) {
+   animation: page-in 0.3s ease both;
+}
+
+@keyframes page-out {
+   to {
+      opacity: 0;
+      transform: scale(0.98);
+   }
+}
+@keyframes page-in {
+   from {
+      opacity: 0;
+      transform: scale(1.02);
+   }
+}
