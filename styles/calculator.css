@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: Hanuman;
+    font-family: "Hanuman";
 }
 
 :root {
@@ -20,6 +20,15 @@ body {
       hsl(192 70% 27% / 0.03) 13.8px
    );
 }
+@font-face {
+   font-family: "Hanuman";
+   src: url("../fonts/Hanuman-Variable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Google Sans Flex";
+    src: url("../fonts/Google-Sans-Flex-Variable.ttf") format("truetype");
+}
+
 .infinity-title-container {
     overflow: hidden;
     white-space: nowrap;
@@ -205,6 +214,16 @@ section.main {
         1px 3px 3px hsl(107 100% 38% / 0.2),
         2px 6px 6px hsl(107 100% 28% / 0.1);
     cursor: pointer;
+}
+.screen p.quit {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    font-size: 16px;
+    color: hsl(107 100% 43% / 0.3);
+    text-shadow:
+        1px 3px 3px hsl(107 100% 38% / 0.2),
+        2px 6px 6px hsl(107 100% 28% / 0.1);
 }
 .screen p {
     font-family: 'Google Sans Flex';

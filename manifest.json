@@ -1,11 +1,11 @@
 {
-   "name": "The Rack",
-   "short_name": "TheRack",
-   "start_url": "/The-Rack/",
-   "scope": "/The-Rack",
+   "name": "The-Rack",
+   "short_name": "The-Rack",
+   "start_url": "./The-Rack/",
+   "scope": "./The-Rack",
    "display": "standalone",
-   "theme_color": "#ff6600",
-   "background_color": "#0b3641",
+   "theme_color": "hsl(24 800% 50%)",
+   "background_color": "hsl(192 70% 15%)",
    "icons": [
       {
          "src": "./svg/the-rack.svg",

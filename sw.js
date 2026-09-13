@@ -1,12 +1,53 @@
-const CACHE = 'my-pwa-v1';
-const ASSETS = ['.', 'index.html', 'pages/calculator.html', 'pages/tally.html', 'styles/the-rack.css', 'styles/calculator.css', 'styles/tally.css', 'styles/nav.css', 'styles/mini/mini-calculator.css', 'scripts/calculator.js', 'scripts/nav.js', 'scripts/random-color.js', 'svg/the-rack.svg', 'svg/calculator.svg', 'svg/squiggly-line.svg', 'png/the-rack-192.png', 'png/the-rack-512.png', 'manifest.json'];
+const VERSION = 'v1';
+const CACHE = `The-Rack-${VERSION}`;
 
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+const APP_STATIC_RESOURCES = ['./', './index.html', './manifest.json', './pages/calculator.html', './pages/tally.html', './styles/the-rack.css', './styles/calculator.css', './styles/tally.css', './styles/mini/mini-calculator.css', './scripts/calculator.js', './scripts/random-color.js', './svg/squiggly-line.svg', './fonts/Hanuman-Variable.ttf'];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      cache.addAll(APP_STATIC_RESOURCES);
+    })(),
+  );
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(r => r || fetch(e.request))
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(
+        names.map((name) => {
+          if (name !== CACHE_NAME) {
+            return caches.delete(name);
+          }
+          return undefined;
+        }),
+      );
+      await clients.claim();
+    })(),
   );
-});   
+});
+
+self.addEventListener("fetch", (event) => {
+  // when seeking an HTML page
+  if (event.request.mode === "navigate") {
+    // Return to the index.html page
+    event.respondWith(caches.match("./"));
+    return;
+  }
+
+  // For every other request type
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request.url);
+      if (cachedResponse) {
+        // Return the cached response if it's available.
+        return cachedResponse;
+      }
+      // Respond with an HTTP 404 response status.
+      return new Response(null, { status: 404 });
+    })(),
+  );
+});
