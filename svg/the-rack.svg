@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+   <style>
+      .red {
+         fill: hsl(353 64.9% 52%);
+      }
+      .blue {
+         fill: hsl(211 92.6% 47.5%);
+      }
+   </style>
+   <g transform="translate(5, 1)">
+      <rect class="red"
+         x="0"
+         y="0"
+         width="26"
+         height="8"
+         rx="2"
+      />
+   </g>
+   <g transform="translate(5, 13)">
+      <rect class="blue"
+         x="0"
+         y="0"
+         width="16"
+         height="8"
+         rx="2"
+      />
+   </g>
+   <g transform="translate(5, 25)">
+      <rect class="red"
+         x="0"
+         y="0"
+         width="10"
+         height="8"
+         rx="2"
+      />
+   </g>
+   <g transform="translate(19, 25)">
+      <rect class="red"
+         x="0"
+         y="0"
+         width="12"
+         height="8"
+         rx="2"
+      />
+   </g>
+</svg>
