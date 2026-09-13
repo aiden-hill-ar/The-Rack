@@ -1,7 +1,8 @@
 {
    "name": "The Rack",
    "short_name": "TheRack",
-   "start_url": "/",
+   "start_url": "/The-Rack/",
+   "scope": "/The-Rack",
    "display": "standalone",
    "theme_color": "#ff6600",
    "background_color": "#0b3641",
