@@ -7,7 +7,7 @@
          fill: hsl(211 92.6% 47.5%);
       }
    </style>
-   <g transform="translate(5, 1)">
+   <g transform="translate(5, 3)">
       <rect class="red"
          x="0"
          y="0"
@@ -16,7 +16,7 @@
          rx="2"
       />
    </g>
-   <g transform="translate(5, 13)">
+   <g transform="translate(5, 14)">
       <rect class="blue"
          x="0"
          y="0"
