@@ -8,21 +8,9 @@ nav.addEventListener("mousemove", e => {
 
     const distanceX = e.clientX - buttonX;
 
-    button.style.setProperty("--pull-x", `${distanceX * 0.02}px`);
+    button.style.setProperty("--pull-x", `${distanceX * 0.05}px`);
 })
 
 nav.addEventListener("mouseleave", e => {
     button.style.setProperty("--pull-x", "0px");
-})
-
-const home = document.querySelector("[data-button='home']");
-
-home.addEventListener("click", e => {
-    switchPage();
 });
-
-function switchPage() {
-    document.startViewTransition(() => {
-        window.location.href = "../index.html";
-    });
-}
