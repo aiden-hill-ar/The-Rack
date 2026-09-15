@@ -6,8 +6,8 @@
 }
 
 :root {
-    --ease-out: cubic-bezier(0.506, -0.006, 0, 0.998);
-    --ease-in: cubic-bezier(0.998, -0.006, 0.504, 1.001);
+    --ease-start: cubic-bezier(1, -0.002, 0.377, 1.005);
+    --ease-end: cubic-bezier(0.158, 0.623, 0.252, 0.999);
 }
 
 body {
@@ -197,6 +197,7 @@ section.main {
         1px 3px 3px hsl(107 100% 38% / 0.2),
         2px 6px 6px hsl(107 100% 28% / 0.1);
     cursor: pointer;
+    user-select: none;
 }
 .screen p.starting {
     animation: os 50ms;
@@ -214,16 +215,20 @@ section.main {
         1px 3px 3px hsl(107 100% 38% / 0.2),
         2px 6px 6px hsl(107 100% 28% / 0.1);
     cursor: pointer;
+    user-select: none;
 }
 .screen p.quit {
     position: absolute;
     top: 30px;
     left: 10px;
-    font-size: 16px;
+    padding: 5px;
+    margin-left: -5px;
+    font-size: 20px;
     color: hsl(107 100% 43% / 0.3);
     text-shadow:
         1px 3px 3px hsl(107 100% 38% / 0.2),
         2px 6px 6px hsl(107 100% 28% / 0.1);
+    user-select: none;
 }
 .screen p {
     font-family: 'Google Sans Flex';
@@ -266,7 +271,7 @@ section.main {
     box-shadow:
         1px 3px 2px 1px hsl(23 10% 15% / 0.5),
         2px 6px 3px hsl(23 10% 10% / 0.2);
-    transition: box-shadow 0.15s var(--ease-in), transform 0.15s var(--ease-in);
+    transition: box-shadow 0.15s var(--ease-start), transform 0.15s var(--ease-start);
 }
 .num-button {
     background-color: hsl(23 10% 20% / 0.9);
@@ -303,7 +308,7 @@ section.main {
     color: hsl(23 10% 3% / 0.9);
     text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.6);
     transition: transform 0.25s, text-shadow 0.25s;
-    transition-timing-function: var(--ease-in);
+    transition-timing-function: var(--ease-start);
 }
 .num-button p {
     color: hsl(23 10% 53% / 0.9);
@@ -320,14 +325,14 @@ section.main {
     .special-button:hover p {
         transform: translateY(0px);
         text-shadow: 1.8px 5.5px 3px hsl(0 0% 0% / 0.5);
-        transition-timing-function: var(--ease-out);
+        transition-timing-function: var(--ease-end);
     }
 
     .num-button:hover,
     .operator-button:hover,
     .special-button:hover {
         transform: translateY(-2px);
-        transition: box-shadow 0.15s var(--ease-out), transform 0.01s var(--ease-out);
+        transition: box-shadow 0.15s var(--ease-end), transform 0.01s var(--ease-end);
     }
     .num-button:hover {
         background-color: hsl(23 10% 20% / 0.9);
@@ -363,7 +368,7 @@ section.main {
 .operator-button.pressed,
 .special-button.pressed {
     transform: translateY(4px);
-    transition: box-shadow 0.1s var(--ease-out), transform 0.01s var(--ease-out);
+    transition: box-shadow 0.1s var(--ease-end), transform 0.01s var(--ease-end);
 }
 .num-button:active,
 .num-button.pressed {
@@ -402,17 +407,17 @@ section.main {
     stroke-linecap: round;
     stroke-linejoin: round;
     will-change: auto;
-    transition: transform 0.15s var(--ease-in), filter 0.15s var(--ease-in);
+    transition: transform 0.15s var(--ease-start), filter 0.15s var(--ease-start);
 }
 .special-button.delete:hover svg {
     transform: translate(-4px, 0px);
     filter: drop-shadow(1px 3px 3px hsl(0 0% 0% / 0.4));
-    transition: transform 0.15s var(--ease-out), stroke 0.15s;
+    transition: transform 0.15s var(--ease-end), stroke 0.15s;
 }
 .special-button.delete:active svg {
     transform: translate(0px, 0px);
     stroke: hsl(23 10% 3% / 0.6);
-    transition: transform 0.15s var(--ease-out) 0.1s;
+    transition: transform 0.15s var(--ease-end) 0.1s;
 }
 
 

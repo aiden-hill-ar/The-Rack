@@ -191,7 +191,7 @@
     box-shadow:
         0.2px 0.6px 0.4px 0.2px hsl(23 10% 15% / 0.5),
         0.4px 1.2px 0.6px hsl(23 10% 10% / 0.2);
-    transition: box-shadow 0.15s var(--ease-in), transform 0.15s var(--ease-in);
+    transition: box-shadow 0.15s var(--ease-start), transform 0.15s var(--ease-start);
 }
 .num-button {
     background-color: hsl(23 10% 20% / 0.9);
@@ -228,7 +228,7 @@
     color: hsl(23 10% 3% / 0.9);
     text-shadow: 0.1px 0.3px 0.6px hsl(0 0% 0% / 0.6);
     transition: transform 0.25s, text-shadow 0.25s;
-    transition-timing-function: var(--ease-in);
+    transition-timing-function: var(--ease-start);
 }
 .num-button p {
     color: hsl(23 10% 53% / 0.9);
@@ -245,14 +245,14 @@
     .special-button:hover p {
         transform: translateY(0px);
         text-shadow: 0.36px 1.1px 0.6px hsl(0 0% 0% / 0.5);
-        transition-timing-function: var(--ease-out);
+        transition-timing-function: var(--ease-end);
     }
 
     .num-button:hover,
     .operator-button:hover,
     .special-button:hover {
         transform: translateY(-0.4px);
-        transition: box-shadow 0.15s var(--ease-out), transform 0.01s var(--ease-out);
+        transition: box-shadow 0.15s var(--ease-end), transform 0.01s var(--ease-end);
     }
     .num-button:hover {
         background-color: hsl(23 10% 20% / 0.9);
@@ -288,7 +288,7 @@
 .operator-button.pressed,
 .special-button.pressed {
     transform: translateY(0.8px);
-    transition: box-shadow 0.1s var(--ease-out), transform 0.01s var(--ease-out);
+    transition: box-shadow 0.1s var(--ease-end), transform 0.01s var(--ease-end);
 }
 .num-button:active,
 .num-button.pressed {
@@ -327,17 +327,17 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     will-change: auto;
-    transition: transform 0.15s var(--ease-in), filter 0.15s var(--ease-in);
+    transition: transform 0.15s var(--ease-start), filter 0.15s var(--ease-start);
 }
 .special-button.delete:hover svg {
     transform: translate(-0.8px, 0px);
     filter: drop-shadow(0.2px 0.6px 0.6px hsl(0 0% 0% / 0.4));
-    transition: transform 0.15s var(--ease-out), stroke 0.15s;
+    transition: transform 0.15s var(--ease-end), stroke 0.15s;
 }
 .special-button.delete:active svg {
     transform: translate(0px, 0px);
     stroke: hsl(23 10% 3% / 0.6);
-    transition: transform 0.15s var(--ease-out) 0.1s;
+    transition: transform 0.15s var(--ease-end) 0.1s;
 }
 
 

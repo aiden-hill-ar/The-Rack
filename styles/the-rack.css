@@ -77,6 +77,7 @@ div.content .container {
    flex-wrap: wrap;
    flex: 1;
    justify-content: space-around;
+   align-items: center;
    max-width: 600px;
    min-width: 200px;
    height: fit-content;
@@ -102,6 +103,17 @@ div.content .calculator {
 }
 div.content .container a {
    text-decoration: none;
+}
+
+div.content .tally {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: aliceblue;
+   height: 50px;
+   width: 100px;
+   border: solid 2px black;
+   border-radius: 10px;
 }
 
 
