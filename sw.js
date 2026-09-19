@@ -1,7 +1,7 @@
 const VERSION = 'v1';
-const CACHE = `The-Rack-${VERSION}`;
+const CACHE_NAME = `The-Rack-${VERSION}`;
 
-const APP_STATIC_RESOURCES = ['./', './index.html', './manifest.json', './pages/calculator.html', './pages/tally.html', './styles/the-rack.css', './styles/calculator.css', './styles/tally.css', './styles/mini/mini-calculator.css', './scripts/calculator.js', './scripts/random-color.js', './svg/squiggly-line.svg', './fonts/Hanuman-Variable.ttf'];
+const APP_STATIC_RESOURCES = ['./', './index.html', './manifest.json', './pages/calculator.html', './pages/tally.html', './css/the-rack.css', './css/calculator.css', './css/tally.css', './css/mini/mini-calculator.css', './css/calculator.js', './js/random-color.js', './js/calculator.js', './js/tally.js', './svg/squiggly-line.svg', './fonts/Hanuman-Variable.ttf'];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

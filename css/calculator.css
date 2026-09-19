@@ -1,0 +1,700 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Hanuman";
+}
+
+:root {
+    --ease-start: cubic-bezier(1, -0.002, 0.377, 1.005);
+    --ease-end: cubic-bezier(.3, .7, .4, 1.5);
+}
+
+body {
+    background-color: hsl(192 70% 65% / 0.3);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      hsl(192 70% 27% / 0.03) 10px,
+      hsl(192 70% 27% / 0.03) 13.8px
+   );
+}
+@font-face {
+   font-family: "Hanuman";
+   src: url("../fonts/Hanuman-Variable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Google Sans Flex";
+    src: url("../fonts/Google-Sans-Flex-Variable.ttf") format("truetype");
+}
+
+.infinity-title-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+.infinity-title {
+    font-size: 56px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: -2.5vw;
+    text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.4);
+}
+.infinity-title span {
+    color: hsl(23 80% 48%);
+    font-size: 74px;
+    font-weight: 700;
+    text-shadow:
+        1px 3px 3px hsl(23 80% 38% / 0.6),
+        2px 6px 6px hsl(23 80% 28% / 0.2);
+}
+.squiggly-line {
+    height: 100px;
+    max-width: 2000px;
+    background-image: url("../svg/squiggly-line.svg");
+    background-size: auto 100px;
+    background-repeat: no-repeat;
+}
+section.main {
+    display: flex;
+    justify-content: center;
+    background-color: hsl(192 70% 15% / 0.8);
+}
+
+/* ------------------------------- calculator ------------------------------- */
+
+.calculator {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 5px 20px;
+}
+
+.screen,
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 1 1 100%;
+    height: 200px;
+    padding: 10px 20px;
+    background-color: hsl(23 10% 1%);
+    border: 3px solid hsl(23 80% 48%);
+    border-radius: 30px;
+}
+.screen::before,
+.buttons::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    left: 2px;
+    background: none;
+    border: 3px solid hsl(23 10% 10%);
+    border-radius: 30px;
+    pointer-events: none;
+}
+.screen::before {
+    border-top-left-radius: 10px;
+}
+
+/* ---------------------------------- frame --------------------------------- */
+.frame {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    background-color: hsl(24 10% 50% / 0.9);
+    box-shadow: 
+        0.6px 0.2px 0.6px hsl(24 10% 20% / 0.44) inset,
+        1.5px 0.6px 1.6px -1.2px hsl(24 10% 20% / 0.37) inset,
+        4.2px 1.6px 4.3px -2.4px hsl(24 10% 20% / 0.31) inset,
+        10.9px 4.3px 11.3px -3.5px hsl(24 10% 20% / 0.24) inset,
+        -0.6px 0.2px 0.6px hsl(24 10% 20% / 0.44) inset,
+        -1.5px 0.6px 1.6px -1.2px hsl(24 10% 20% / 0.37) inset,
+        -4.2px 1.6px 4.3px -2.4px hsl(24 10% 20% / 0.31) inset,
+        -10.9px 4.3px 11.3px -3.5px hsl(24 10% 20% / 0.24) inset,
+        0.2px 0.5px 0.7px hsl(24 10% 20% / 0.39),
+        2.4px 7.1px 9.3px -0.4px hsl(24 10% 20% / 0.48),
+        5.3px 15.8px 20.6px -0.9px hsl(24 10% 20% / 0.56),
+        10.9px 32.4px 42.3px -1.3px hsl(24 10% 20% / 0.64),
+        21px 62.6px 81.7px -1.7px hsl(24 10% 20% / 0.73);
+}
+
+.frame.top {
+    margin-bottom: -5px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 10px;
+}
+.frame.bottom {
+    margin-top: -5px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.hinge {
+    height: 10px;
+    margin: 5px 0;
+    padding: 0;
+    background-color: hsl(24 10% 40% / 0.9);
+    border-top: 1px solid hsl(24 10% 30% / 0.9);
+    border-bottom: 1px solid hsl(24 10% 30%);
+    box-shadow:
+        1px 3px 2px 1px hsla(24, 10%, 20%, 0.3) inset;
+}
+/* --------------------------------- screen --------------------------------- */
+
+.screen {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        hsl(107 100% 43% / 0.025) 3px
+    ), radial-gradient(
+        ellipse at center,
+        hsl(107 100% 20% / 0.1),
+        transparent 70%
+    ),
+    hsl(23 10% 1%);
+    box-shadow: 
+        0.5px -0.5px 0.8px hsl(107 100% 38%  / 0.1) inset,
+        1.6px -1.6px 2.5px -0.8px hsl(107 100% 38%  / 0.1) inset,
+        4.1px -4.1px 6.5px -1.7px hsl(107 100% 38%  / 0.1) inset,
+        10px -10px 15.9px -2.5px hsl(107 100% 38%  / 0.1) inset,
+        -0.5px 0.5px 0.8px hsl(107 100% 38%  / 0.1) inset,
+        -1.6px 1.6px 2.5px -0.8px hsl(107 100% 38%  / 0.1) inset,
+        -4.1px 4.1px 6.5px -1.7px hsl(107 100% 38%  / 0.1) inset,
+        -10px 10px 15.9px -2.5px hsl(107 100% 38%  / 0.1) inset,
+
+        0.2px -0.5px 0.7px hsl(23 60% 28% / 0.37),
+        1px -3px 3.9px -0.9px hsl(23 60% 28% / 0.48),
+        3.4px -10.7px 13.9px -1.7px hsl(23 60% 28% / 0.58),
+        
+        0.2px 0.5px 0.7px hsl(23 60% 28% / 0.37),
+        1px 3px 3.9px -0.9px hsl(23 60% 28% / 0.48),
+        3.4px 10.7px 13.9px -1.7px hsl(23 60% 28% / 0.58);
+}
+.screen p.os,
+.screen p.starting {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    filter: blur(0.5px);
+    animation: os 50ms infinite;
+    color: hsl(107 100% 43% / 0.3);
+    text-shadow:
+        1px 3px 3px hsl(107 100% 38% / 0.2),
+        2px 6px 6px hsl(107 100% 28% / 0.1);
+    cursor: pointer;
+    user-select: none;
+}
+.screen p.starting {
+    animation: os 50ms;
+    animation-iteration-count: 50;
+}
+.screen p.hidden {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    filter: blur(0.5px);
+    animation: none;
+    color: hsl(107 100% 43% / 0.3);
+    text-shadow:
+        1px 3px 3px hsl(107 100% 38% / 0.2),
+        2px 6px 6px hsl(107 100% 28% / 0.1);
+    cursor: pointer;
+    user-select: none;
+}
+.screen p.quit {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    padding: 5px;
+    margin-left: -5px;
+    font-size: 20px;
+    color: hsl(107 100% 43% / 0.3);
+    text-shadow:
+        1px 3px 3px hsl(107 100% 38% / 0.2),
+        2px 6px 6px hsl(107 100% 28% / 0.1);
+    user-select: none;
+}
+.screen p {
+    font-family: 'Google Sans Flex';
+    font-size: 24px;
+    color: hsl(107 100% 43%);
+    text-shadow:
+        1px 3px 3px hsl(107 100% 38% / 0.6),
+        2px 6px 6px hsl(107 100% 28% / 0.2);
+}
+.screen p span {
+    animation: blink 2s step-end infinite;
+}
+
+/* ---------------------------------- buttons ---------------------------------- */
+
+.buttons {
+    position: relative;
+    display: grid;
+    align-items: center;
+    height: 500px;
+    max-width: 450px;
+    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+    gap: 10px 0;
+    user-select: none;
+    box-shadow:
+        0.2px 0.5px 0.7px hsl(23 60% 28% / 0.37),
+        1px 2.9px 3.8px -0.9px hsl(23 60% 28% / 0.48),
+        3.4px 10.4px 13.5px -1.7px hsl(23 60% 28% / 0.58);
+}
+/* 
+hsl(23 10% 15% / 0.5) 
+hsl(23 80% 15% / 0.5)
+hsl(23 10% 15% / 0.5)
+*/
+.num-button,
+.operator-button,
+.special-button {
+    position: relative;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    outline-offset: 4px;
+    background: transparent;
+    transition-property: transform, background-color;
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-start);
+}
+.num-button {
+    box-shadow:
+        1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
+}
+.operator-button {
+    box-shadow:
+        1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
+}
+.special-button {
+    box-shadow:
+        1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
+}
+.num-button .shadow,
+.operator-button .shadow,
+.special-button .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    outline-offset: 4px;
+    filter: blur(2px);
+    transform: translateY(2px);
+}
+.num-button .shadow {
+    background-color: hsl(23 10% 15% / 0.4);
+}
+.operator-button .shadow {
+    background-color: hsl(23 80% 15% / 0.4);
+}
+.special-button .shadow {
+    background-color: hsl(23 10% 15% / 0.4);
+}
+
+.num-button .edge,
+.operator-button .edge,
+.special-button .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    outline-offset: 4px;
+}
+.num-button .edge {
+    background-color: hsl(23 10% 15%);
+}
+.operator-button .edge {
+    background-color: hsl(23 80% 25%);
+}
+.special-button .edge {
+    background-color: hsl(23 10% 25%);
+}
+
+.num-button .clickable,
+.operator-button .clickable,
+.special-button .clickable {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    cursor: default;
+    font-weight: 700;
+    font-size: 32px;
+    border-radius: 50%;
+    transform: translateY(-4px);
+    transition-property: transform, text-shadow, box-shadow;
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-start);
+}
+.num-button .clickable {
+    background-color: hsl(23 10% 20%);
+    color: hsl(23 10% 53% / 0.9);
+    border: 2px solid hsl(23 10% 25% / 0.6);
+    text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
+    box-shadow: 0.5px 1.5px 3px 1px hsla(23, 10%, 13%, 0.5) inset;
+}
+.operator-button .clickable {
+    color: hsl(23 10% 3%);
+    background-color: hsl(23 80% 48%);
+    border: 2px solid hsl(23 80% 63% / 0.6);
+    text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
+    box-shadow: 0.5px 1.5px 3px 1px hsl(23 80% 25% / 0.5) inset;
+}
+.special-button .clickable {
+    color: hsl(23 10% 3%);
+    background-color: hsl(23 10% 50%);
+    border: 2px solid hsl(23 10% 55% / 0.6);
+    text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
+    box-shadow: 0.5px 1.5px 3px 1px hsl(23 10% 25% / 0.5) inset;
+}
+
+.num-button p,
+.operator-button p,
+.special-button p {
+    text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.6);
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-in);
+}
+
+@media (hover: hover) {
+    .num-button:hover .clickable,
+    .operator-button:hover .clickable,
+    .special-button:hover .clickable {
+        transform: translateY(-6px);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+    .num-button:hover .shadow,
+    .operator-button:hover .shadow,
+    .special-button:hover .shadow {
+        transform: translateY(4px);
+        opacity: 0.5;
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+    .num-button:hover p,
+    .operator-button:hover p,
+    .special-button:hover p {
+        transform: translateY(-2px);
+        text-shadow: 1.8px 5.5px 3px hsl(0 0% 0% / 0.5);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+
+    .num-button:hover .clickable {
+        box-shadow: 1px 3px 4px 1px hsl(23 10% 0% / 0.3) inset;
+    }
+    .operator-button:hover .clickable {
+        box-shadow: 1px 3px 4px 1px hsl(23 80% 25% / 0.5) inset;
+    }
+    .special-button:hover .clickable {
+        box-shadow: 1px 3px 4px 1px hsl(23 10% 25% / 0.5) inset;
+    }
+}
+
+
+.num-button:active .clickable,
+.operator-button:active .clickable,
+.special-button:active .clickable,
+.num-button.pressed,
+.operator-button.pressed,
+.special-button.pressed {
+    transform: translateY(-3px);
+    transition-property: transform;
+    transition-duration: 50ms;
+    transition-timing-function: var(--ease-end);
+}
+.num-button:active .shadow,
+.operator-button:active .shadow,
+.special-button:active .shadow,
+.num-button.pressed,
+.operator-button.pressed,
+.special-button.pressed {
+    transform: translateY(1px);
+    transition-property: transform;
+    transition-duration: 50ms;
+    transition-timing-function: var(--ease-end);
+}
+.num-button:active,
+.num-button.pressed {
+    box-shadow:
+    3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
+}
+.operator-button:active,
+.operator-button.pressed {
+    box-shadow:
+    3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
+}
+.special-button:active,
+.special-button.pressed {
+    box-shadow:
+    3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
+}
+
+.num-button:active p,
+.operator-button:active p,
+.special-button:active p {
+    transform: translateY(1px);
+}
+
+.special-button.delete svg {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0.5px 1.5px 3px hsl(0 0% 0% / 0.4));
+    fill: none;
+    stroke: hsl(23 10% 3%);
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    will-change: auto;
+    transition: transform 0.15s var(--ease-start), filter 0.15s var(--ease-start);
+}
+.special-button.delete:hover svg {
+    transform: translate(-4px, 0px);
+    filter: drop-shadow(1px 3px 3px hsl(0 0% 0% / 0.4));
+    transition: transform 100ms var(--ease-end), stroke 100ms;
+}
+.special-button.delete:active svg {
+    stroke: hsl(23 10% 3% / 0.6);
+    transition-duration: 50ms;
+}
+
+
+.num-button.num0 {
+    grid-row: 5 / 6;
+    grid-column: 2 / 3;
+}
+.num-button.num1 {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+}
+.num-button.num2 {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+}
+.num-button.num3 {
+    grid-row: 4 / 5;
+    grid-column: 3 / 4;
+}
+.num-button.num4 {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+.num-button.num5 {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+.num-button.num6 {
+    grid-row: 3 / 4;
+    grid-column: 3 / 4;
+}
+.num-button.num7 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+.num-button.num8 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+.num-button.num9 {
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+}
+.num-button.dot {
+    grid-row: 5 / 6;
+    grid-column: 3 / 4;
+}
+
+.operator-button.equals {
+    grid-row: 5 / 6;
+    grid-column: 4 / 5;
+}
+.operator-button.plus {
+    grid-row: 4 / 5;
+    grid-column: 4 / 5;
+}
+.operator-button.minus {
+    grid-row: 3 / 4;
+    grid-column: 4 / 5;
+}
+.operator-button.multiply {
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+}
+.operator-button.divide {
+    grid-row: 1 / 2;
+    grid-column: 4 / 5;
+}
+
+.special-button.delete {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+.special-button.clear {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+.special-button.parenthesis {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+}
+.special-button.positive-negative {
+    grid-row: 5 / 6;
+    grid-column: 1 / 2;
+}
+
+/* --------------------------------- @media --------------------------------- */
+
+@media screen and (width <= 700px) {
+    .infinity-title {
+        transform: translateX(-280px);
+    }
+}
+@media screen and (width <= 500px) {
+    .buttons {
+        height: fit-content;
+        grid-template: repeat(5, 80px) / repeat(4, 1fr);
+    }
+    .num-button,
+    .operator-button,
+    .special-button {
+        height: 70px;
+        width: 70px;
+    }
+    .num-button p,
+    .operator-button p,
+    .special-button p {
+        font-size: 32px;
+    }
+}
+@media screen and (width <= 400px) {
+    .infinity-title span {
+        font-size: 68px;
+    }
+    .calculator {
+        margin-bottom: 30px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .buttons {
+        height: fit-content;
+        grid-template: repeat(5, 70px) / repeat(4, 1fr);
+        padding: 10px 5px;
+    }
+    
+}
+@media screen and (width <= 360px) {
+    .num-button,
+    .operator-button,
+    .special-button {
+        height: 55px;
+        width: 55px;
+    }
+    .num-button p,
+    .operator-button p,
+    .special-button p {
+        font-size: 24px;
+    }
+}
+
+/* ------------------------------- animations ------------------------------- */
+
+@keyframes blink {
+    50% { opacity: 0;}
+}
+
+@keyframes os {
+    10% {
+        filter: blur(0.5px);
+        color: hsl(107 100% 43% / 0.3);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.2),
+            2px 6px 6px hsl(107 100% 28% / 0.1);
+    }
+    30% {
+        filter: blur(0.5px);
+        color: hsl(107 100% 43% / 0.4);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.3),
+            2px 6px 6px hsl(107 100% 28% / 0.2);
+    }
+    40% {
+        filter: blur(0.7px);
+        color: hsl(107 100% 43% / 0.6);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.4),
+            2px 6px 6px hsl(107 100% 28% / 0.3);
+    }
+    57% {
+        filter: blur(0.3px);
+        color: hsl(107 100% 43% / 0.2);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.1),
+            2px 6px 6px hsl(107 100% 28% / 0.05);
+    }
+    69% {
+        filter: blur(0.6px);
+        color: hsl(107 100% 43% / 0.4);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.3),
+            2px 6px 6px hsl(107 100% 28% / 0.3);
+    }
+    83% {
+        filter: blur(0.7px);
+        color: hsl(107 100% 43% / 0.1);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.1),
+            2px 6px 6px hsl(107 100% 28% / 0.01);
+    }
+    90% {
+        filter: blur(0.5px);
+        color: hsl(107 100% 43% / 0.3);
+        text-shadow:
+            1px 3px 3px hsl(107 100% 38% / 0.2),
+            2px 6px 6px hsl(107 100% 28% / 0.1);
+    }
+}
+
+
+@view-transition { navigation: auto; }
+::view-transition-old(root) {
+   animation: page-out 300ms forwards 1;
+}
+::view-transition-new(root) {
+  animation: page-in 300ms forwards 1;
+}
+::view-transition-group(calculator) {
+   transition-timing-function: var(--ease-start);
+}
+@keyframes page-out { to { opacity: 0; } }
+@keyframes page-in { from { opacity: 0; } }
+#mini-calculator .calculator { view-transition-name: calculator; }
+.full.calculator { view-transition-name: calculator; }

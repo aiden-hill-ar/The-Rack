@@ -3,74 +3,101 @@
 <head>
    <style>
       @view-transition { navigation: auto; }
+      ::view-transition-old(root) {
+         animation: page-out 300ms forwards 1;
+      }
+      ::view-transition-new(root) {
+         animation: page-in 300ms forwards 1;
+      }
+      @keyframes page-out { to { opacity: 0; } }
+      @keyframes page-in { from { opacity: 0; } }
+      #mini-calculator .calculator { view-transition-name: calculator; }
+      .full.calculator { view-transition-name: calculator; }
    </style>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="manifest" href="./manifest.json" />
    <link rel="shortcut icon" href="./svg/the-rack.svg" />
-   <link rel="stylesheet" href="./styles/the-rack.css" />
-   <link rel="stylesheet" href="./styles/mini/mini-calculator.css" />
-   <link rel="preload" href="./fonts/Hanuman-Variable.ttf" as="font" type="font/ttf" crossorigin />
-   <link rel="preload" href="./fonts/Google-Sans-Flex-Variable.ttf" as="font" type="font/ttf" crossorigin />
+   <link rel="stylesheet" href="./css/the-rack.css" />
+   <link rel="stylesheet" href="./css/mini/mini-calculator.css" />
    <title>The Rack</title>
 </head>
 <body>
    <h1 class="title">The <br> Rack</h1>
    <section class="main">
       <div class="content">
-<!-- ----------------------------- calculator start ------------------------------ -->
          <div class="container">
-            <a href="./pages/calculator.html"><div class="calculator">
-                  <div class="frame top">
-                     <section class="screen">
-                        <p class="starting">O.S. Yappy Krappy</p>
-                        <p class="input">Awaiting Input<span>:</span></p>
-                     </section>
-                  </div>
-                  <div class="frame hinge"></div>
-                  <div class="frame bottom">
-                     <section class="buttons">
-                        <div class="num-button num0" data-num="0"><p>0</p></div>
-                        <div class="num-button num1" data-num="1"><p>1</p></div>
-                        <div class="num-button num2" data-num="2"><p>2</p></div>
-                        <div class="num-button num3" data-num="3"><p>3</p></div>
-                        <div class="num-button num4" data-num="4"><p>4</p></div>
-                        <div class="num-button num5" data-num="5"><p>5</p></div>
-                        <div class="num-button num6" data-num="6"><p>6</p></div>
-                        <div class="num-button num7" data-num="7"><p>7</p></div>
-                        <div class="num-button num8" data-num="8"><p>8</p></div>
-                        <div class="num-button num9" data-num="9"><p>9</p></div>
-                        <div class="num-button dot" data-num="."><p>.</p></div>
+            <a href="./pages/calculator.html" id="mini-calculator">
+               <div class="calculator">
+            <div class="frame top">
+                <section class="screen">
+                    <p class="starting">O.S. Yappy Krappy</p>
+                    <p class="input">Awaiting Input<span>:</span></p>
+                </section>
+            </div>
+            <div class="frame hinge"></div>
+            <div class="frame bottom">
+                <section class="buttons">
+                    <button class="num-button num0"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>0</p></span></button>
 
-                        <div class="operator-button equals" data-num="="><p>=</p></div>
-                        <div class="operator-button plus" data-num="+"><p>+</p></div>
-                        <div class="operator-button minus" data-num="-"><p>-</p></div>
-                        <div class="operator-button multiply" data-num="*"><p>X</p></div>
-                        <div class="operator-button divide" data-num="/"><p>/</p></div>
+                    <button class="num-button num1"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>1</p></span></button>
 
-                        <div class="special-button delete" data-num="delete">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                 <g transform="translate(2.5,4)">
+                    <button class="num-button num2"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>2</p></span></button>
+
+                    <button class="num-button num3"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>3</p></span></button>
+
+                    <button class="num-button num4"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>4</p></span>
+
+                    <button class="num-button num5"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>5</p></span></button>
+
+                    <button class="num-button num6"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>6</p></span></button>
+
+                    <button class="num-button num7"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>7</p></span></button>
+
+                    <button class="num-button num8"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>8</p></span></button>
+
+                    <button class="num-button num9"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>9</p></span></button>
+
+                    <button class="num-button dot"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>.</p></span></button>
+
+
+                    <button class="operator-button equals"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>=</p></span></button>
+
+                    <button class="operator-button plus"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>+</p></span></button>
+
+                    <button class="operator-button minus"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>-</p></span></button>
+
+                    <button class="operator-button multiply"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>X</p></span></button>
+
+                    <button class="operator-button divide"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>/</p></span></button>
+
+
+                    <button class="special-button delete">
+                        <span class="shadow"></span><span class="edge"></span>
+                        <span class="clickable">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <g transform="translate(2.5,4)">
                                     <path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/>
                                     <path d="m12 9 6 6"/>
                                     <path d="m18 9-6 6"/>
-                                 </g>
-                              </svg>
-                        </div>
-                        <div class="special-button clear" data-num="clear"><p>AC</p></div>
-                        <div class="special-button parenthesis" data-num="parenthesis"><p><span>(</span> <span>)</span></p></div>
-                        <div class="special-button positive-negative" data-num="positive-negative"><p>+/-</p></div>
-                     </section>
-                  </div>
-            </div></a>
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <button class="special-button clear"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>AC</p></span></button>
+
+                    <button class="special-button parenthesis"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>( )</p></span></button>
+
+                    <button class="special-button positive-negative"><span class="shadow"></span><span class="edge"></span><span class="clickable"><p>+/-</p></span></button>
+                </section>
+            </div>
+        </div>
             <a href="./pages/tally.html"><div class="tally">
                <p>Tally</p>
             </div></a>
-<!-- -------------------------- calculator end -------------------------- -->
-         </div>
-      </div>
    </section>
-   <script src="./scripts/random-color.js"></script>
+   <script src="./js/random-color.js"></script>
    <script src="./sw-register.js"></script>
 </body>
 </html>

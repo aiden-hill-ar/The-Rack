@@ -7,58 +7,16 @@
 
 :root {
     --ease-start: cubic-bezier(1, -0.002, 0.377, 1.005);
-    --ease-end: cubic-bezier(0.158, 0.623, 0.252, 0.999);
+    --ease-end: cubic-bezier(.3, .7, .4, 1.5);
 }
 
-body {
-    background-color: hsl(192 70% 65% / 0.3);
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      hsl(192 70% 27% / 0.03) 10px,
-      hsl(192 70% 27% / 0.03) 13.8px
-   );
-}
 @font-face {
    font-family: "Hanuman";
-   src: url("../fonts/Hanuman-Variable.ttf") format("truetype");
+   src: url("../../fonts/Hanuman-Variable.ttf") format("truetype");
 }
 @font-face {
     font-family: "Google Sans Flex";
-    src: url("../fonts/Google-Sans-Flex-Variable.ttf") format("truetype");
-}
-
-.infinity-title-container {
-    overflow: hidden;
-    white-space: nowrap;
-}
-.infinity-title {
-    font-size: 56px;
-    font-weight: 500;
-    white-space: nowrap;
-    margin-left: -2.5vw;
-    text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.4);
-}
-.infinity-title span {
-    color: hsl(23 80% 48%);
-    font-size: 74px;
-    font-weight: 700;
-    text-shadow:
-        1px 3px 3px hsl(23 80% 38% / 0.6),
-        2px 6px 6px hsl(23 80% 28% / 0.2);
-}
-.squiggly-line {
-    height: 100px;
-    max-width: 2000px;
-    background-image: url("../svg/squiggly-line.svg");
-    background-size: auto 100px;
-    background-repeat: no-repeat;
-}
-section.main {
-    display: flex;
-    justify-content: center;
-    background-color: hsl(192 70% 15% / 0.8);
+    src: url("../../fonts/Google-Sans-Flex-Variable.ttf") format("truetype");
 }
 
 /* ------------------------------- calculator ------------------------------- */
@@ -217,19 +175,6 @@ section.main {
     cursor: pointer;
     user-select: none;
 }
-.screen p.quit {
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    padding: 5px;
-    margin-left: -5px;
-    font-size: 20px;
-    color: hsl(107 100% 43% / 0.3);
-    text-shadow:
-        1px 3px 3px hsl(107 100% 38% / 0.2),
-        2px 6px 6px hsl(107 100% 28% / 0.1);
-    user-select: none;
-}
 .screen p {
     font-family: 'Google Sans Flex';
     font-size: 24px;
@@ -258,142 +203,199 @@ section.main {
         1px 2.9px 3.8px -0.9px hsl(23 60% 28% / 0.48),
         3.4px 10.4px 13.5px -1.7px hsl(23 60% 28% / 0.58);
 }
+
 .num-button,
 .operator-button,
 .special-button {
+    position: relative;
     display: flex;
-    height: 70px;
-    width: 70px;
     margin: auto;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    box-shadow:
-        1px 3px 2px 1px hsl(23 10% 15% / 0.5),
-        2px 6px 3px hsl(23 10% 10% / 0.2);
-    transition: box-shadow 0.15s var(--ease-start), transform 0.15s var(--ease-start);
+    border: none;
+    padding: 0;
+    outline-offset: 4px;
+    background: transparent;
+    transition-property: transform, background-color;
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-start);
 }
 .num-button {
-    background-color: hsl(23 10% 20% / 0.9);
-    border: 2px solid hsl(23 10% 25% / 0.6);
     box-shadow:
         1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
-        1px 3px 2px 1px hsl(23 10% 15% / 0.5),
-        2px 6px 3px hsl(23 10% 10% / 0.2);
 }
 .operator-button {
-    background-color: hsl(23 80% 48%);
-    border: 2px solid hsl(23 80% 63% / 0.6);
     box-shadow:
         1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
-        1px 3px 2px 1px hsl(23 80% 15% / 0.5),
-        2px 6px 3px hsl(23 80% 10% / 0.2);
 }
 .special-button {
-    background-color: hsl(23 10% 50% / 0.9);
-    border: 2px solid hsl(23 10% 55% / 0.6);
     box-shadow:
         1px 3px 2px 1px hsl(23 10% 15% / 0.5) inset,
-        1px 3px 2px 1px hsl(23 10% 15% / 0.5),
-        2px 6px 3px hsl(23 10% 10% / 0.2);
 }
-.num-button p,
-.operator-button p,
-.special-button p {
-    display: inline-block;
-    transform: translateY(4px);
+.num-button .shadow,
+.operator-button .shadow,
+.special-button .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    outline-offset: 4px;
+    filter: blur(2px);
+    transform: translateY(2px);
+}
+.num-button .shadow {
+    background-color: hsl(23 10% 15% / 0.4);
+}
+.operator-button .shadow {
+    background-color: hsl(23 80% 15% / 0.4);
+}
+.special-button .shadow {
+    background-color: hsl(23 10% 15% / 0.4);
+}
+
+.num-button .edge,
+.operator-button .edge,
+.special-button .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    outline-offset: 4px;
+}
+.num-button .edge {
+    background-color: hsl(23 10% 15%);
+}
+.operator-button .edge {
+    background-color: hsl(23 80% 25%);
+}
+.special-button .edge {
+    background-color: hsl(23 10% 25%);
+}
+
+.num-button .clickable,
+.operator-button .clickable,
+.special-button .clickable {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
     cursor: default;
     font-weight: 700;
     font-size: 32px;
-    color: hsl(23 10% 3% / 0.9);
-    text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.6);
-    transition: transform 0.25s, text-shadow 0.25s;
+    border-radius: 50%;
+    transform: translateY(-4px);
+    transition-property: transform, text-shadow, box-shadow;
+    transition-duration: 350ms;
     transition-timing-function: var(--ease-start);
+    box-shadow:
+        0.5px 1.5px 3px 1px hsla(0, 0%, 0%, 0.3) inset;
 }
-.num-button p {
+.num-button .clickable {
+    background-color: hsl(23 10% 20%);
     color: hsl(23 10% 53% / 0.9);
+    border: 2px solid hsl(23 10% 25% / 0.6);
+    text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
+}
+.operator-button .clickable {
+    background-color: hsl(23 80% 48%);
+    border: 2px solid hsl(23 80% 63% / 0.6);
+    text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
+}
+.special-button .clickable {
+    background-color: hsl(23 10% 50%);
+    border: 2px solid hsl(23 10% 55% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
 }
 
-.special-button.parenthesis p,
-.operator-button.divide p {
-    transform: translateY(2px);
+.num-button p,
+.operator-button p,
+.special-button p {
+    text-shadow: 0.5px 1.5px 3px hsl(0 0% 0% / 0.6);
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-in);
 }
+
 @media (hover: hover) {
+    .num-button:hover .clickable,
+    .operator-button:hover .clickable,
+    .special-button:hover .clickable {
+        transform: translateY(-6px);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+    .num-button:hover .shadow,
+    .operator-button:hover .shadow,
+    .special-button:hover .shadow {
+        transform: translateY(4px);
+        background-color: hsl(23 10% 15% / 0.3);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
     .num-button:hover p,
     .operator-button:hover p,
     .special-button:hover p {
-        transform: translateY(0px);
+        transform: translateY(-2px);
         text-shadow: 1.8px 5.5px 3px hsl(0 0% 0% / 0.5);
+        transition-duration: 100ms;
         transition-timing-function: var(--ease-end);
     }
 
-    .num-button:hover,
-    .operator-button:hover,
-    .special-button:hover {
-        transform: translateY(-2px);
-        transition: box-shadow 0.15s var(--ease-end), transform 0.01s var(--ease-end);
-    }
-    .num-button:hover {
-        background-color: hsl(23 10% 20% / 0.9);
-        border: 2px solid hsl(23 10% 25% / 0.6);
-        box-shadow:
-            1.5px 4.5px 3px 1px hsl(23 100% 0% / 0.2) inset,
-            2px 3px 2px 1px hsl(23 10% 15% / 0.5),
-            3px 9px 3px hsl(23 10% 10% / 0.2);
-    }
-    .operator-button:hover {
-        background-color: hsl(23 80% 48%);
-        border: 2px solid hsl(23 80% 63% / 0.6);
-        box-shadow:
-            1.5px 4.5px 3px 1px hsl(23 100% 0% / 0.2) inset,
-            2px 3px 2px 1px hsl(23 80% 15% / 0.5),
-            3px 9px 3px hsl(23 80% 10% / 0.2);
-    }
-    .special-button:hover {
-        background-color: hsl(23 10% 50% / 0.9);
-        border: 2px solid hsl(23 10% 55% / 0.6);
-        box-shadow:
-            1.5px 4.5px 3px 1px hsl(23 100% 0% / 0.2) inset,
-            2px 3px 2px 1px hsl(23 10% 15% / 0.5),
-            3px 9px 3px hsl(23 10% 10% / 0.2);
+    .num-button:hover .clickable,
+    .operator-button:hover .clickable,
+    .special-button:hover .clickable {
+        box-shadow: 1px 3px 3px 1px hsl(23 100% 0% / 0.5) inset;
     }
 }
 
 
-.num-button:active,
-.operator-button:active,
-.special-button:active,
+.num-button:active .clickable,
+.operator-button:active .clickable,
+.special-button:active .clickable,
 .num-button.pressed,
 .operator-button.pressed,
 .special-button.pressed {
-    transform: translateY(4px);
-    transition: box-shadow 0.1s var(--ease-end), transform 0.01s var(--ease-end);
+    transform: translateY(-3px);
+    transition-property: transform;
+    transition-duration: 50ms;
+    transition-timing-function: var(--ease-end);
+}
+.num-button:active .shadow,
+.operator-button:active .shadow,
+.special-button:active .shadow,
+.num-button.pressed,
+.operator-button.pressed,
+.special-button.pressed {
+    transform: translateY(1px);
+    transition-property: transform;
+    transition-duration: 50ms;
+    transition-timing-function: var(--ease-end);
 }
 .num-button:active,
 .num-button.pressed {
     box-shadow:
     3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
-    1px 3px 1.5px hsl(23 10% 20% / 0.3);
 }
 .operator-button:active,
 .operator-button.pressed {
     box-shadow:
     3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
-    1px 3px 1.5px hsl(23 10% 20% / 0.3);
 }
 .special-button:active,
 .special-button.pressed {
     box-shadow:
     3px 9px 9px 1px hsl(23 100% 0% / 0.5) inset,
-    1px 3px 1.5px hsl(23 10% 20% / 0.3);
 }
 
-
-
-.num-button:active h1,
-.operator-button:active h1,
-.special-button:active h1 {
+.num-button:active p,
+.operator-button:active p,
+.special-button:active p {
     transform: translateY(1px);
 }
 
@@ -412,12 +414,11 @@ section.main {
 .special-button.delete:hover svg {
     transform: translate(-4px, 0px);
     filter: drop-shadow(1px 3px 3px hsl(0 0% 0% / 0.4));
-    transition: transform 0.15s var(--ease-end), stroke 0.15s;
+    transition: transform 100ms var(--ease-end), stroke 100ms;
 }
 .special-button.delete:active svg {
-    transform: translate(0px, 0px);
     stroke: hsl(23 10% 3% / 0.6);
-    transition: transform 0.15s var(--ease-end) 0.1s;
+    transition-duration: 50ms;
 }
 
 
@@ -504,135 +505,8 @@ section.main {
     grid-column: 1 / 2;
 }
 
-/* --------------------------------- @media --------------------------------- */
-
-@media screen and (width <= 700px) {
-    .infinity-title {
-        transform: translateX(-280px);
-    }
-}
-@media screen and (width <= 500px) {
-    .buttons {
-        height: fit-content;
-        grid-template: repeat(5, 80px) / repeat(4, 1fr);
-    }
-    .num-button,
-    .operator-button,
-    .special-button {
-        height: 70px;
-        width: 70px;
-    }
-    .num-button p,
-    .operator-button p,
-    .special-button p {
-        font-size: 32px;
-    }
-}
-@media screen and (width <= 400px) {
-    .infinity-title span {
-        font-size: 68px;
-    }
-    .calculator {
-        margin-bottom: 30px;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .buttons {
-        height: fit-content;
-        grid-template: repeat(5, 70px) / repeat(4, 1fr);
-        padding: 10px 5px;
-    }
-    
-}
-@media screen and (width <= 360px) {
-    .num-button,
-    .operator-button,
-    .special-button {
-        height: 55px;
-        width: 55px;
-    }
-    .num-button p,
-    .operator-button p,
-    .special-button p {
-        font-size: 24px;
-    }
-}
-
 /* ------------------------------- animations ------------------------------- */
 
 @keyframes blink {
     50% { opacity: 0;}
-}
-
-@keyframes os {
-    10% {
-        filter: blur(0.5px);
-        color: hsl(107 100% 43% / 0.3);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.2),
-            2px 6px 6px hsl(107 100% 28% / 0.1);
-    }
-    30% {
-        filter: blur(0.5px);
-        color: hsl(107 100% 43% / 0.4);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.3),
-            2px 6px 6px hsl(107 100% 28% / 0.2);
-    }
-    40% {
-        filter: blur(0.7px);
-        color: hsl(107 100% 43% / 0.6);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.4),
-            2px 6px 6px hsl(107 100% 28% / 0.3);
-    }
-    57% {
-        filter: blur(0.3px);
-        color: hsl(107 100% 43% / 0.2);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.1),
-            2px 6px 6px hsl(107 100% 28% / 0.05);
-    }
-    69% {
-        filter: blur(0.6px);
-        color: hsl(107 100% 43% / 0.4);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.3),
-            2px 6px 6px hsl(107 100% 28% / 0.3);
-    }
-    83% {
-        filter: blur(0.7px);
-        color: hsl(107 100% 43% / 0.1);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.1),
-            2px 6px 6px hsl(107 100% 28% / 0.01);
-    }
-    90% {
-        filter: blur(0.5px);
-        color: hsl(107 100% 43% / 0.3);
-        text-shadow:
-            1px 3px 3px hsl(107 100% 38% / 0.2),
-            2px 6px 6px hsl(107 100% 28% / 0.1);
-    }
-}
-
-
-::view-transition-old(root) {
-   animation: page-out 0.3s ease both;
-}
-::view-transition-new(root) {
-   animation: page-in 0.3s ease both;
-}
-
-@keyframes page-out {
-   to {
-      opacity: 0;
-      transform: scale(0.99);
-   }
-}
-@keyframes page-in {
-   from {
-      opacity: 0;
-      transform: scale(1.01);
-   }
 }

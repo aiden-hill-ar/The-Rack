@@ -75,20 +75,63 @@
 .button-group {
    display: flex;
    width: fit-content;
-   background-color: hsl(23 80% 48%);
-   margin: 10px 15px 0 auto;
-   border-radius: 10px;
-   box-shadow: 
-      0.3px 0.5px 0.7px hsl(23 73% 40% / 0.27),
-      0.7px 1.5px 1.9px -0.8px hsl(23 73% 40% / 0.27),
-      1.8px 3.6px 4.5px -1.7px hsl(23 73% 40% / 0.27),
-      4.4px 8.8px 11.1px -2.5px hsl(23 73% 40% / 0.27);
-}
-.button-group div {
-   display: flex;
    height: fit-content;
-   border-radius: 10px;
-   padding: 8px 14px;
+}
+.button-group button {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: fit-content;
+   background-color: green;
+   border: none;
+   border-radius: 5px;
+   outline-offset: 4px;
+   cursor: pointer;
+}
+.shadow {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   border-radius: 5px;
+   background: hsl(356 40% 20% / 0.2);
+   filter: blur(1px);
+   transform: translateY(2px);
+   transition: transform 300ms var(--ease-start);
+}
+.edge {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   border-radius: 5px;
+   background: hsl(356 60% 30%);
+   transition: transform 300ms var(--ease-start);
+}
+.front {
+   display: block;
+   position: relative;
+   border-radius: 5px;
+   padding: 5px 7px;
+   background: hsl(356 67.8% 46.3%);
+   transform: translateY(-2px);
+   transition: transform 300ms var(--ease-start);
+}
+
+.button-group.right-side {
+   position: relative;
+   display: flex;
+   gap: 10px;
+   margin: 10px 15px 0 auto;
+}
+.button-group {
+   margin: 10px 0 0 15px;
+}
+.style-menu {
+   position: relative;
 }
 .button-group svg {
    width: 24px;
@@ -100,53 +143,48 @@
    stroke-linejoin: round;
    transition: transform 300ms var(--ease-start);
 }
-.button-group.clear,
-div.add-button,
-div.style-menu {
-   transition-property: box-shadow, background-color;
-   transition-duration: 200ms;
-   transition-timing-function: var(--ease-start);
-}
-.button-group.clear {
-   margin: 10px auto 0 15px;
-   padding: 7px;
-   height: fit-content;
-}
-div.add-button {
-   border-top-right-radius: 0px;
-   border-bottom-right-radius: 0px;
-   border-right: 1px solid black;
-}
-div.style-menu {
-   border-top-left-radius: 0px;
-   border-bottom-left-radius: 0px;
-   border-left: 1px solid black;
-}
-.style-menu svg {
-   width: 24px;
-   height: 24px;
-   fill: none;
-   stroke: black;
-   stroke-width: 2px;
-   stroke-linecap: round;
-   stroke-linejoin: round;
-}
-div.add-button:hover,
-div.style-menu:hover,
-div.button-group.button-group.clear:hover {
-   background-color: hsl(23 80% 38%);
-   box-shadow: 
-      0.3px 0.5px 0.7px hsl(23 73% 40% / 0.27),
-      0.7px 1.5px 1.9px -0.8px hsl(23 73% 40% / 0.27),
-      1.8px 3.6px 4.5px -1.7px hsl(23 73% 40% / 0.27),
-      4.4px 8.8px 11.1px -2.5px hsl(23 73% 40% / 0.27);
+
+button:hover .front {
+   transform: translateY(-4px);
+   transition-duration: 100ms;
    transition-timing-function: var(--ease-end);
 }
-div.add-button:hover svg,
-div.style-menu:hover svg,
-div.button-group.button-group.clear:hover svg {
+button:hover .shadow {
+   transform: translateY(3px);
+   transition-duration: 100ms;
+   transition-timing-function: var(--ease-end);
+}
+button:hover svg {
+   transform: translateY(-1px);
+   transition-timing-function: var(--ease-end);
+}
+
+button:active .front {
    transform: translateY(-2px);
-   transition-timing-function: var(--ease-end);
+   transition-duration: 10ms;
+}
+button:active .shadow {
+   transform: translateY(2px);
+   transition-duration: 10ms;
+}
+
+.style-dropdown {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   top: 50px;
+   right: 0%;
+   width: 150px;
+   background-color: hsl(356 67.8% 46.3%);
+   border: 2px solid hsl(356 67.8% 26.3%);
+   border-radius: 5px;
+   list-style-type: none;
+   user-select: none;
+}
+.style-dropdown li {
+   width: fit-content;
+   margin:  5px 10px 5px auto;
+   cursor: pointer;
 }
 
 /* --------------------------------- tallies -------------------------------- */
@@ -160,18 +198,26 @@ div.button-group.button-group.clear:hover svg {
    margin: 10px;
 }
 
-div.tally {
+.tally {
    width: 200px;
    height: 200px;
    background-color: hsl(23 80% 38%);
-   border-radius: 10px;
+   border-radius: 5px;
 }
 
 .tally-title {
    background-color: hsl(194 96% 40%);
-   border-radius: 10px;
+   border-radius: inherit;
    border-bottom-right-radius: 0;
    border-bottom-left-radius: 0;
+}
+
+.tally.modern {
+   border-radius: 10px;
+}
+
+.tally.classic {
+   border-radius: 0px;
 }
 
 
@@ -180,30 +226,28 @@ div.tally {
 /* --------------------------------- @media --------------------------------- */
 
 @media screen and (width >= 1500px) {
-   .button-group {
+   .button-group.right-side {
       margin: 15px 25px 0 auto;
    }
-   .button-group.button-group.clear {
-      margin: 15px auto 0 25px;
+   .button-group.left-side {
+      margin: 15px 0 0 25px;
    }
 }
 
 ::view-transition-old(root) {
-   animation: page-out 300ms ease both;
+   animation: page-out 300ms forwards 1;
 }
 ::view-transition-new(root) {
-   animation: page-in 300ms ease both;
+   animation: page-in 300ms forwards 1;
 }
 
 @keyframes page-out {
    to {
       opacity: 0;
-      transform: scale(0.98);
    }
 }
 @keyframes page-in {
    from {
       opacity: 0;
-      transform: scale(1.02);
    }
 }
