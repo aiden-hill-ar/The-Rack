@@ -328,18 +328,12 @@ section.main {
     max-width: 450px;
     grid-template: repeat(5, 1fr) / repeat(4, 1fr);
     gap: 10px 0;
-    color: inherit;
     user-select: none;
     box-shadow:
         0.2px 0.5px 0.7px hsl(23 60% 28% / 0.37),
         1px 2.9px 3.8px -0.9px hsl(23 60% 28% / 0.48),
         3.4px 10.4px 13.5px -1.7px hsl(23 60% 28% / 0.58);
 }
-/* 
-hsl(23 10% 15% / 0.5) 
-hsl(23 80% 15% / 0.5)
-hsl(23 10% 15% / 0.5)
-*/
 .num-button,
 .operator-button,
 .special-button {
@@ -350,6 +344,7 @@ hsl(23 10% 15% / 0.5)
     align-items: center;
     border-radius: 50%;
     border: none;
+    color: inherit;
     padding: 0;
     outline-offset: 4px;
     background: transparent;

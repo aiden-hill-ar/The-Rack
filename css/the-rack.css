@@ -127,6 +127,22 @@ div.content .tally {
    div.content .calculator {
       flex-basis: 100%
    }
+   .title {
+      color: hsl(var(--text-color) 100% 50% / 0.5);
+   }
+   .title.low-shadow {
+      text-shadow:
+         0.0024em 0.0039em 0.0055em hsl(var(--text-color) 100% 50% / 0.17),
+         0.0032em 0.0063em 0.0078em hsl(var(--text-color) 100% 50% / 0.17),
+         0.0078em 0.0157em 0.0196em hsl(var(--text-color) 100% 50% / 0.17);
+   }
+   .title.medium-shadow {
+      text-shadow:
+         0.0024em 0.0039em 0.0055em hsl(var(--text-color) 100% 50% / 0.18),
+         0.0063em 0.0125em 0.0157em hsl(var(--text-color) 100% 50% / 0.18),
+         0.0164em 0.0321em 0.0407em hsl(var(--text-color) 100% 50% / 0.18),
+         0.0391em 0.0782em 0.0985em hsl(var(--text-color) 100% 50% / 0.18);
+   }
 }
 
 @view-transition { navigation: auto; }
