@@ -88,6 +88,7 @@
    border-radius: 5px;
    outline-offset: 4px;
    cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
 }
 .shadow {
    position: absolute;
@@ -117,7 +118,7 @@
    border-radius: 5px;
    padding: 5px 7px;
    background: hsl(356 67.8% 46.3%);
-   transform: translateY(-2px);
+   transform: translateY(-3px);
    transition: transform 300ms var(--ease-start);
 }
 
@@ -143,20 +144,21 @@
    stroke-linejoin: round;
    transition: transform 300ms var(--ease-start);
 }
-
-button:hover .front {
-   transform: translateY(-4px);
-   transition-duration: 100ms;
-   transition-timing-function: var(--ease-end);
-}
-button:hover .shadow {
-   transform: translateY(3px);
-   transition-duration: 100ms;
-   transition-timing-function: var(--ease-end);
-}
-button:hover svg {
-   transform: translateY(-1px);
-   transition-timing-function: var(--ease-end);
+@media (hover: hover) {
+   button:hover .front {
+      transform: translateY(-4px);
+      transition-duration: 100ms;
+      transition-timing-function: var(--ease-end);
+   }
+   button:hover .shadow {
+      transform: translateY(3px);
+      transition-duration: 100ms;
+      transition-timing-function: var(--ease-end);
+   }
+   button:hover svg {
+      transform: translateY(-1px);
+      transition-timing-function: var(--ease-end);
+   }
 }
 
 button:active .front {

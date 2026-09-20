@@ -304,6 +304,7 @@ hsl(23 10% 15% / 0.5)
     outline-offset: 4px;
     filter: blur(2px);
     transform: translateY(2px);
+    -webkit-tap-highlight-color: transparent;
 }
 .num-button .shadow {
     background-color: hsl(23 10% 15% / 0.4);
@@ -325,6 +326,7 @@ hsl(23 10% 15% / 0.5)
     width: 100%;
     border-radius: 50%;
     outline-offset: 4px;
+    -webkit-tap-highlight-color: transparent;
 }
 .num-button .edge {
     background-color: hsl(23 10% 15%);
@@ -336,9 +338,7 @@ hsl(23 10% 15% / 0.5)
     background-color: hsl(23 10% 25%);
 }
 
-.num-button .clickable,
-.operator-button .clickable,
-.special-button .clickable {
+.clickable {
     position: relative;
     display: flex;
     justify-content: center;
@@ -353,6 +353,7 @@ hsl(23 10% 15% / 0.5)
     transition-property: transform, text-shadow, box-shadow;
     transition-duration: 350ms;
     transition-timing-function: var(--ease-start);
+    -webkit-tap-highlight-color: transparent;
 }
 .num-button .clickable {
     background-color: hsl(23 10% 20%);
@@ -614,7 +615,10 @@ hsl(23 10% 15% / 0.5)
 @media screen and (width <= 360px) {
     .num-button,
     .operator-button,
-    .special-button {
+    .special-button,
+    .shadow,
+    .edge,
+    .clickable {
         height: 55px;
         width: 55px;
     }
