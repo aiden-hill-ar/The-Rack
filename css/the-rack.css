@@ -40,16 +40,16 @@ body {
 }
 .title.low-shadow {
    text-shadow:
-      0.3px 0.5px 0.7px hsl(var(--text-color) 100% 50% / 0.34),
-      0.4px 0.8px 1px hsl(var(--text-color) 100% 50% / 0.34),
-      1px 2px 2.5px hsl(var(--text-color) 100% 50% / 0.34);
+      0.0047em 0.0078em 0.0109em hsl(var(--text-color) 100% 50% / 0.34),
+      0.0063em 0.0125em 0.0156em hsl(var(--text-color) 100% 50% / 0.34),
+      0.0156em 0.0313em 0.0391em hsl(var(--text-color) 100% 50% / 0.34);
 }
 .title.medium-shadow {
-   text-shadow: 
-      0.3px 0.5px 0.7px hsl(var(--text-color) 100% 50% / 0.36),
-      0.8px 1.6px 2px hsl(var(--text-color) 100% 50% / 0.36),
-      2.1px 4.1px 5.2px hsl(var(--text-color) 100% 50% / 0.36),
-      5px 10px 12.6px hsl(var(--text-color) 100% 50% / 0.36);
+   text-shadow:
+      0.0047em 0.0078em 0.0109em hsl(var(--text-color) 100% 50% / 0.36),
+      0.0125em 0.025em 0.0313em hsl(var(--text-color) 100% 50% / 0.36),
+      0.0328em 0.0641em 0.0813em hsl(var(--text-color) 100% 50% / 0.36),
+      0.0781em 0.1563em 0.1969em hsl(var(--text-color) 100% 50% / 0.36);
 }
 .title.thin-color-border {
    -webkit-text-stroke: 1px hsl(var(--text-color) 100% 50%);

@@ -219,10 +219,6 @@ section.main {
 }
 .screen p.quit {
     position: absolute;
-    top: 30px;
-    left: 10px;
-    padding: 5px;
-    margin-left: -5px;
     font-size: 20px;
     color: hsl(107 100% 43% / 0.3);
     text-shadow:
@@ -230,6 +226,85 @@ section.main {
         2px 6px 6px hsl(107 100% 28% / 0.1);
     user-select: none;
 }
+.screen .quit-button {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    user-select: none;
+    outline-offset: 4px;
+    -webkit-tap-highlight-color: transparent;
+}
+.quit-button .shadow,
+.quit-button .edge,
+.quit-button .front {
+    height: 25px;
+    width: 52px;
+    border-radius: 10px;
+    transition-property: transform, background-color;
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-start);
+    cursor: pointer;
+}
+.quit-button .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(107 100% 3% / 1);
+    filter: blur(2px);
+    transform: translateY(1px);
+}
+.quit-button .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(107 100% 4%);
+}
+.quit-button .front {
+    background-color: hsl(107 100% 7%);
+    transform: translateY(-2px);
+}
+.quit-button p {
+    transition-property: transform;
+    transition-duration: 350ms;
+    transition-timing-function: var(--ease-start);
+}
+
+@media (hover: hover) {
+    .quit-button:hover .front {
+        transform: translateY(-3px);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+    .quit-button:hover .shadow {
+        transform: translateY(2px);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+    .quit-button:hover p {
+        transform: translateY(-1px);
+        transition-duration: 100ms;
+        transition-timing-function: var(--ease-end);
+    }
+}
+.quit-button:active .front {
+    transform: translateY(1px);
+}
+.quit-button:active .shadow {
+    transform: translateY(-1px);
+}
+.quit-button:active p {
+    transform: translateY(0px);
+}
+
 .screen p {
     font-family: 'Google Sans Flex';
     font-size: 24px;
@@ -252,6 +327,7 @@ section.main {
     max-width: 450px;
     grid-template: repeat(5, 1fr) / repeat(4, 1fr);
     gap: 10px 0;
+    color: inherit;
     user-select: none;
     box-shadow:
         0.2px 0.5px 0.7px hsl(23 60% 28% / 0.37),
@@ -338,7 +414,7 @@ hsl(23 10% 15% / 0.5)
     background-color: hsl(23 10% 25%);
 }
 
-.clickable {
+.front {
     position: relative;
     display: flex;
     justify-content: center;
@@ -355,21 +431,21 @@ hsl(23 10% 15% / 0.5)
     transition-timing-function: var(--ease-start);
     -webkit-tap-highlight-color: transparent;
 }
-.num-button .clickable {
+.num-button .front {
     background-color: hsl(23 10% 20%);
     color: hsl(23 10% 53% / 0.9);
     border: 2px solid hsl(23 10% 25% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
     box-shadow: 0.5px 1.5px 3px 1px hsla(23, 10%, 13%, 0.5) inset;
 }
-.operator-button .clickable {
+.operator-button .front {
     color: hsl(23 10% 3%);
     background-color: hsl(23 80% 48%);
     border: 2px solid hsl(23 80% 63% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
     box-shadow: 0.5px 1.5px 3px 1px hsl(23 80% 25% / 0.5) inset;
 }
-.special-button .clickable {
+.special-button .front {
     color: hsl(23 10% 3%);
     background-color: hsl(23 10% 50%);
     border: 2px solid hsl(23 10% 55% / 0.6);
@@ -386,9 +462,9 @@ hsl(23 10% 15% / 0.5)
 }
 
 @media (hover: hover) {
-    .num-button:hover .clickable,
-    .operator-button:hover .clickable,
-    .special-button:hover .clickable {
+    .num-button:hover .front,
+    .operator-button:hover .front,
+    .special-button:hover .front {
         transform: translateY(-6px);
         transition-duration: 100ms;
         transition-timing-function: var(--ease-end);
@@ -410,21 +486,21 @@ hsl(23 10% 15% / 0.5)
         transition-timing-function: var(--ease-end);
     }
 
-    .num-button:hover .clickable {
+    .num-button:hover .front {
         box-shadow: 1px 3px 4px 1px hsl(23 10% 0% / 0.3) inset;
     }
-    .operator-button:hover .clickable {
+    .operator-button:hover .front {
         box-shadow: 1px 3px 4px 1px hsl(23 80% 25% / 0.5) inset;
     }
-    .special-button:hover .clickable {
+    .special-button:hover .front {
         box-shadow: 1px 3px 4px 1px hsl(23 10% 25% / 0.5) inset;
     }
 }
 
 
-.num-button:active .clickable,
-.operator-button:active .clickable,
-.special-button:active .clickable,
+.num-button:active .front,
+.operator-button:active .front,
+.special-button:active .front,
 .num-button.pressed,
 .operator-button.pressed,
 .special-button.pressed {
@@ -618,7 +694,7 @@ hsl(23 10% 15% / 0.5)
     .special-button,
     .shadow,
     .edge,
-    .clickable {
+    .front {
         height: 55px;
         width: 55px;
     }

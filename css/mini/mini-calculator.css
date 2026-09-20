@@ -277,9 +277,9 @@
     background-color: hsl(23 10% 25%);
 }
 
-.num-button .clickable,
-.operator-button .clickable,
-.special-button .clickable {
+.num-button .front,
+.operator-button .front,
+.special-button .front {
     position: relative;
     display: flex;
     justify-content: center;
@@ -297,18 +297,18 @@
     box-shadow:
         0.5px 1.5px 3px 1px hsla(0, 0%, 0%, 0.3) inset;
 }
-.num-button .clickable {
+.num-button .front {
     background-color: hsl(23 10% 20%);
     color: hsl(23 10% 53% / 0.9);
     border: 2px solid hsl(23 10% 25% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
 }
-.operator-button .clickable {
+.operator-button .front {
     background-color: hsl(23 80% 48%);
     border: 2px solid hsl(23 80% 63% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
 }
-.special-button .clickable {
+.special-button .front {
     background-color: hsl(23 10% 50%);
     border: 2px solid hsl(23 10% 55% / 0.6);
     text-shadow: 1px 3px 3px hsl(0 10% 13% / 0.6);
@@ -323,9 +323,9 @@
 }
 
 @media (hover: hover) {
-    .num-button:hover .clickable,
-    .operator-button:hover .clickable,
-    .special-button:hover .clickable {
+    .num-button:hover .front,
+    .operator-button:hover .front,
+    .special-button:hover .front {
         transform: translateY(-6px);
         transition-duration: 100ms;
         transition-timing-function: var(--ease-end);
@@ -347,17 +347,17 @@
         transition-timing-function: var(--ease-end);
     }
 
-    .num-button:hover .clickable,
-    .operator-button:hover .clickable,
-    .special-button:hover .clickable {
+    .num-button:hover .front,
+    .operator-button:hover .front,
+    .special-button:hover .front {
         box-shadow: 1px 3px 3px 1px hsl(23 100% 0% / 0.5) inset;
     }
 }
 
 
-.num-button:active .clickable,
-.operator-button:active .clickable,
-.special-button:active .clickable,
+.num-button:active .front,
+.operator-button:active .front,
+.special-button:active .front,
 .num-button.pressed,
 .operator-button.pressed,
 .special-button.pressed {
