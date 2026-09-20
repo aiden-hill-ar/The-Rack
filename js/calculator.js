@@ -53,7 +53,6 @@ function positiveNegative(arr) {
         updateScreen("add first negative");
         firstNum = false;
     }
-    console.log(arr)
 };
 
 function updateScreen(value) {
@@ -88,7 +87,6 @@ function updateScreen(value) {
     } else if (value === "add negative") {
         stringQuery = stringQuery.slice(0, lastSpace) + "-" + stringQuery.slice(lastSpace);
         input.textContent = input.textContent.slice(0, lastSpace) + "-" + input.textContent.slice(lastSpace);
-        console.log(stringQuery);
     } else if (value === "add first negative") {
         stringQuery = "-"
         input.textContent = "-"; // this part isn't working
@@ -105,7 +103,7 @@ function updateScreen(value) {
 function checkOperatorSyntax(arr, opValue) {
     for (let i = 0; i < arr.length; i++) {
         if (typeof arr[i] === "string" && typeof arr[i + 1] === "string") {
-            console.log("two operators");
+            // is supposed to find if there's two operators next to eachother and then I want to replace the current operator with the one that was just clicked, like Apple does in their calculator
         }
     }
     if (query.length === 0) {
@@ -151,8 +149,6 @@ numButtons.forEach(button => {
             query[query.length - 1].push(val === '.' ? '.' : val);
         };
         updateScreen(val);
-        console.log(query);
-        console.log(stringQuery);
     };
 });
 

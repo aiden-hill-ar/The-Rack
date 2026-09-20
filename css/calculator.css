@@ -69,7 +69,7 @@ section.main {
     flex-grow: 1;
     justify-content: center;
     max-width: 500px;
-    margin: 0 5px 20px;
+    margin: 0 5px 50px;
 }
 
 .screen,
@@ -677,7 +677,6 @@ hsl(23 10% 15% / 0.5)
         font-size: 68px;
     }
     .calculator {
-        margin-bottom: 30px;
         margin-left: 0;
         margin-right: 0;
     }
