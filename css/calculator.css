@@ -70,6 +70,7 @@ section.main {
     justify-content: center;
     max-width: 500px;
     margin: 0 5px 50px;
+    touch-action: manipulation;
 }
 
 .screen,

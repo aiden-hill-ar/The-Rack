@@ -11,15 +11,10 @@ function hapticTick() {
 document.querySelectorAll('.num-button, .operator-button, .special-button')
   .forEach(btn => {
     btn.addEventListener('pointerdown', () => {
-      navigator.vibrate(15);
+      if (navigator.vibrate) {
+        navigator.vibrate(15);
+      } else {
+        hapticTick();
+      }
     });
   });
-
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function(event) {
-let now = new Date().getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault(); 
-    }
-    lastTouchEnd = now; 
-}, false);

@@ -28,6 +28,7 @@
     justify-content: center;
     max-width: 500px;
     margin: 0 5px 20px;
+    touch-action: manipulation;
 }
 
 .screen,
@@ -197,6 +198,7 @@
     max-width: 450px;
     grid-template: repeat(5, 1fr) / repeat(4, 1fr);
     gap: 10px 0;
+    color: inherit;
     user-select: none;
     box-shadow:
         0.2px 0.5px 0.7px hsl(23 60% 28% / 0.37),
