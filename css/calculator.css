@@ -2,7 +2,10 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Hanuman";
+    font-family: "Hanuman", "Georgia", "Times New Roman", serif;
+}
+.screen p {
+    font-family: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 :root {
@@ -27,6 +30,14 @@ body {
 @font-face {
     font-family: "Google Sans Flex";
     src: url("../fonts/Google-Sans-Flex-Variable.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Georgia';
+    src: local('Georgia');
+    size-adjust: 104.0%;
+    ascent-override: 93.9%;
+    descent-override: 47.0%;
+    line-gap-override: 0.0%;
 }
 
 .infinity-title-container {
@@ -307,7 +318,6 @@ section.main {
 }
 
 .screen p {
-    font-family: 'Google Sans Flex';
     font-size: 24px;
     color: hsl(107 100% 43%);
     text-shadow:
@@ -762,14 +772,17 @@ section.main {
 @view-transition { navigation: auto; }
 ::view-transition-old(root) {
    animation: page-out 300ms forwards 1;
+   mix-blend-mode: normal;
 }
 ::view-transition-new(root) {
   animation: page-in 300ms forwards 1;
+  mix-blend-mode: normal;
 }
 ::view-transition-group(calculator) {
    transition-timing-function: var(--ease-start);
 }
-@keyframes page-out { to { opacity: 0; } }
-@keyframes page-in { from { opacity: 0; } }
+@keyframes page-out { to { opacity: 0; filter: blur(12px); } }
+@keyframes page-in { from { opacity: 0; filter: blur(12px); } }
 #mini-calculator .calculator { view-transition-name: calculator; }
 .full.calculator { view-transition-name: calculator; }
+.below-title { view-transition-name: below-title; }

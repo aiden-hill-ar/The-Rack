@@ -58,7 +58,13 @@ body {
    -webkit-text-stroke: 3px hsl(var(--text-color) 100% 50%);
 }
 
-
+.squiggly-line {
+    height: 100px;
+    max-width: 2000px;
+    background-image: url("../svg/squiggly-line.svg");
+    background-size: auto 100px;
+    background-repeat: no-repeat;
+}
 
 section.main {
     display: flex;
@@ -148,14 +154,17 @@ div.content .tally {
 @view-transition { navigation: auto; }
 ::view-transition-old(root) {
    animation: page-out 300ms forwards 1;
+   mix-blend-mode: normal;
 }
 ::view-transition-new(root) {
   animation: page-in 300ms forwards 1;
+  mix-blend-mode: normal;
 }
 ::view-transition-group(calculator) {
    transition-timing-function: var(--ease-start);
 }
-@keyframes page-out { to { opacity: 0; } }
-@keyframes page-in { from { opacity: 0; } }
+@keyframes page-out { to { opacity: 0; filter: blur(12px); } }
+@keyframes page-in { from { opacity: 0; filter: blur(12px); } }
 #mini-calculator .calculator { view-transition-name: calculator; }
 .full.calculator { view-transition-name: calculator; }
+.below-title { view-transition-name: below-title; }

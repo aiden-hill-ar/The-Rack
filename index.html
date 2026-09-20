@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
    <style>
-      @view-transition { navigation: auto; }
-      ::view-transition-old(root) {
-         animation: page-out 300ms forwards 1;
-      }
-      ::view-transition-new(root) {
-         animation: page-in 300ms forwards 1;
-      }
-      @keyframes page-out { to { opacity: 0; } }
-      @keyframes page-in { from { opacity: 0; } }
-      #mini-calculator .calculator { view-transition-name: calculator; }
-      .full.calculator { view-transition-name: calculator; }
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root) {
+            animation: page-out 300ms forwards 1;
+            mix-blend-mode: normal;
+        }
+        ::view-transition-new(root) {
+            animation: page-in 300ms forwards 1;
+            mix-blend-mode: normal;
+        }
+        @keyframes page-out { to { opacity: 0; filter: blur(12px); } }
+        @keyframes page-in { from { opacity: 0; filter: blur(12px); } }
+        #mini-calculator .calculator { view-transition-name: calculator; }
+        .full.calculator { view-transition-name: calculator; }
+        .below-title { view-transition-name: below-title; }
    </style>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,79 +27,82 @@
 </head>
 <body>
    <h1 class="title">The <br> Rack</h1>
-   <section class="main">
-      <div class="content">
-         <div class="container">
-            <a href="./pages/calculator.html#calculator" id="mini-calculator">
-               <div class="calculator">
-            <div class="frame top">
-                <section class="screen">
-                    <p class="starting">O.S. Yappy Krappy</p>
-                    <p class="input">Awaiting Input<span>:</span></p>
-                </section>
+   <div class="below-title">
+    <div class="squiggly-line"></div>
+    <section class="main">
+        <div class="content">
+            <div class="container">
+                <a href="./pages/calculator.html#calculator" id="mini-calculator">
+                <div class="calculator">
+                <div class="frame top">
+                    <section class="screen">
+                        <p class="starting">O.S. Yappy Krappy</p>
+                        <p class="input">Awaiting Input<span>:</span></p>
+                    </section>
+                </div>
+                <div class="frame hinge"></div>
+                <div class="frame bottom">
+                    <section class="buttons">
+                        <button class="num-button num0"><span class="shadow"></span><span class="edge"></span><span class="front"><p>0</p></span></button>
+
+                        <button class="num-button num1"><span class="shadow"></span><span class="edge"></span><span class="front"><p>1</p></span></button>
+
+                        <button class="num-button num2"><span class="shadow"></span><span class="edge"></span><span class="front"><p>2</p></span></button>
+
+                        <button class="num-button num3"><span class="shadow"></span><span class="edge"></span><span class="front"><p>3</p></span></button>
+
+                        <button class="num-button num4"><span class="shadow"></span><span class="edge"></span><span class="front"><p>4</p></span>
+
+                        <button class="num-button num5"><span class="shadow"></span><span class="edge"></span><span class="front"><p>5</p></span></button>
+
+                        <button class="num-button num6"><span class="shadow"></span><span class="edge"></span><span class="front"><p>6</p></span></button>
+
+                        <button class="num-button num7"><span class="shadow"></span><span class="edge"></span><span class="front"><p>7</p></span></button>
+
+                        <button class="num-button num8"><span class="shadow"></span><span class="edge"></span><span class="front"><p>8</p></span></button>
+
+                        <button class="num-button num9"><span class="shadow"></span><span class="edge"></span><span class="front"><p>9</p></span></button>
+
+                        <button class="num-button dot"><span class="shadow"></span><span class="edge"></span><span class="front"><p>.</p></span></button>
+
+
+                        <button class="operator-button equals"><span class="shadow"></span><span class="edge"></span><span class="front"><p>=</p></span></button>
+
+                        <button class="operator-button plus"><span class="shadow"></span><span class="edge"></span><span class="front"><p>+</p></span></button>
+
+                        <button class="operator-button minus"><span class="shadow"></span><span class="edge"></span><span class="front"><p>-</p></span></button>
+
+                        <button class="operator-button multiply"><span class="shadow"></span><span class="edge"></span><span class="front"><p>X</p></span></button>
+
+                        <button class="operator-button divide"><span class="shadow"></span><span class="edge"></span><span class="front"><p>/</p></span></button>
+
+
+                        <button class="special-button delete">
+                            <span class="shadow"></span><span class="edge"></span>
+                            <span class="front">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                    <g transform="translate(2.5,4)">
+                                        <path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/>
+                                        <path d="m12 9 6 6"/>
+                                        <path d="m18 9-6 6"/>
+                                    </g>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <button class="special-button clear"><span class="shadow"></span><span class="edge"></span><span class="front"><p>AC</p></span></button>
+
+                        <button class="special-button parenthesis"><span class="shadow"></span><span class="edge"></span><span class="front"><p>( )</p></span></button>
+
+                        <button class="special-button positive-negative"><span class="shadow"></span><span class="edge"></span><span class="front"><p>+/-</p></span></button>
+                    </section>
+                </div>
             </div>
-            <div class="frame hinge"></div>
-            <div class="frame bottom">
-                <section class="buttons">
-                    <button class="num-button num0"><span class="shadow"></span><span class="edge"></span><span class="front"><p>0</p></span></button>
-
-                    <button class="num-button num1"><span class="shadow"></span><span class="edge"></span><span class="front"><p>1</p></span></button>
-
-                    <button class="num-button num2"><span class="shadow"></span><span class="edge"></span><span class="front"><p>2</p></span></button>
-
-                    <button class="num-button num3"><span class="shadow"></span><span class="edge"></span><span class="front"><p>3</p></span></button>
-
-                    <button class="num-button num4"><span class="shadow"></span><span class="edge"></span><span class="front"><p>4</p></span>
-
-                    <button class="num-button num5"><span class="shadow"></span><span class="edge"></span><span class="front"><p>5</p></span></button>
-
-                    <button class="num-button num6"><span class="shadow"></span><span class="edge"></span><span class="front"><p>6</p></span></button>
-
-                    <button class="num-button num7"><span class="shadow"></span><span class="edge"></span><span class="front"><p>7</p></span></button>
-
-                    <button class="num-button num8"><span class="shadow"></span><span class="edge"></span><span class="front"><p>8</p></span></button>
-
-                    <button class="num-button num9"><span class="shadow"></span><span class="edge"></span><span class="front"><p>9</p></span></button>
-
-                    <button class="num-button dot"><span class="shadow"></span><span class="edge"></span><span class="front"><p>.</p></span></button>
-
-
-                    <button class="operator-button equals"><span class="shadow"></span><span class="edge"></span><span class="front"><p>=</p></span></button>
-
-                    <button class="operator-button plus"><span class="shadow"></span><span class="edge"></span><span class="front"><p>+</p></span></button>
-
-                    <button class="operator-button minus"><span class="shadow"></span><span class="edge"></span><span class="front"><p>-</p></span></button>
-
-                    <button class="operator-button multiply"><span class="shadow"></span><span class="edge"></span><span class="front"><p>X</p></span></button>
-
-                    <button class="operator-button divide"><span class="shadow"></span><span class="edge"></span><span class="front"><p>/</p></span></button>
-
-
-                    <button class="special-button delete">
-                        <span class="shadow"></span><span class="edge"></span>
-                        <span class="front">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                <g transform="translate(2.5,4)">
-                                    <path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/>
-                                    <path d="m12 9 6 6"/>
-                                    <path d="m18 9-6 6"/>
-                                </g>
-                            </svg>
-                        </span>
-                    </button>
-
-                    <button class="special-button clear"><span class="shadow"></span><span class="edge"></span><span class="front"><p>AC</p></span></button>
-
-                    <button class="special-button parenthesis"><span class="shadow"></span><span class="edge"></span><span class="front"><p>( )</p></span></button>
-
-                    <button class="special-button positive-negative"><span class="shadow"></span><span class="edge"></span><span class="front"><p>+/-</p></span></button>
-                </section>
-            </div>
-        </div>
-            <a href="./pages/tally.html"><div class="tally">
-               <p>Tally</p>
-            </div></a>
-   </section>
+                <a href="./pages/tally.html"><div class="tally">
+                <p>Tally</p>
+                </div></a>
+    </section>
+   </div>
    <script src="./js/random-color.js"></script>
    <script src="./sw-register.js"></script>
 </body>

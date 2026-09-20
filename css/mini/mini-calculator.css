@@ -2,7 +2,11 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Hanuman";
+    font-family: "Hanuman", Georgia, 'Times New Roman', Times, serif;
+    font-optical-sizing: auto;
+}
+.screen p {
+    font-family: "Google Sans Flex", system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 :root {
@@ -178,7 +182,6 @@
 }
 
 .screen p {
-    font-family: 'Google Sans Flex';
     font-size: 24px;
     color: hsl(107 100% 43%);
     text-shadow:
