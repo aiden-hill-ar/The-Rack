@@ -82,6 +82,7 @@ section.main {
     max-width: 500px;
     margin: 0 5px 50px;
     touch-action: manipulation;
+    user-select: none;
 }
 
 .screen,
@@ -166,6 +167,7 @@ section.main {
     flex-flow: column;
     overflow: hidden;
     border-top-left-radius: 10px;
+    user-select: text;
     background:
     repeating-linear-gradient(
         to bottom,
